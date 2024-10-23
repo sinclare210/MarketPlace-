@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 //import icons
-import {IoMdClose} from "react-icons/io"
+import {IoMdAdd, IoMdClose, IoMdRemove} from "react-icons/io"
 
-const CartItem = ({item,}) => {
+//import cart contex 
+import { CartContext } from '../contexts/CartContext';
+
+const CartItem = ({item}) => {
+  //use contex
+  const {removeFromCart} = useContext(CartContext)
   //desstructure
   const {id, title, image, price, amount} = item;
   return (
-    <div className='flex'>
+    <div className='flex gap-x-4 py-2 lg:px-6 border-b border-gray-200 font-light text-gray-500 w-full'>
       <div className='w-full min-h-[150px] flex items-center gap-x-4'>
         {/* image */}
         <Link to={`/product/${id}`}>
@@ -20,22 +25,33 @@ const CartItem = ({item,}) => {
               {title}
             </Link>
             {/* removeicon */}
-            <div className='text-xl cursor-pointer'>
+            <div className='text-xl cursor-pointer' onClick={() => removeFromCart(id)}>
               <IoMdClose className='text-gray-500 hover:text-red-500 transition'/>
             </div>
           </div>
-          <div>
+          <div className='flex gap-x-2 h-[36px] text-sm'>
             {/* qty */}
-            <div>
-
+            <div className='flex flex-1 max-w-[100px] bg-blue-400 items-center h-full border text-primary font-medium'>
+              {/* minus */}
+              <div className='flex-1'>
+              <IoMdRemove/>
+              </div>
+              
+              {/* amount */}
+              <div className='h-full flex justify-center items-center px-2'>{amount}</div>
+              {/* add icon */}
+               <div className='flex-1 h-full flex justify-center items-center cursor-pointer'>
+              <IoMdAdd/>
+              </div>
             </div>
             {/* item price */}
-            <div>
-              
+            <div className='flex-1 flex items-center justify-around'>
+              $ {price}
             </div>
             {/* final price */}
-            <div>
-              
+            {/* make price at 2dp */}
+            <div className='flex-1 flex justify-end items-center text-primary font-medium'>
+              {`$ ${parseFloat(price * amount).toFixed(2)}`}
             </div>
           </div>
         </div>

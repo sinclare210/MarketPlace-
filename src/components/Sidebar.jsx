@@ -29,6 +29,16 @@ const Sidebar = () => {
       <div>{cart.map((item)=>{
         return <CartItem item={item} key={item.id}/>
       })}</div>
+      <div className='bg-pink-200 w-full justify-between flex items-center'>
+        {/* sidebar bottome */}
+        <div>
+          <div><span>Total:</span>$ 1000</div>
+          {/* claer cart icon */}
+          <div className='cursor-pointer  py-4 bg-rose-500 text-white w-12 h-12 flex justify-center items-center text-xl'>
+            <FiTrash2/>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
