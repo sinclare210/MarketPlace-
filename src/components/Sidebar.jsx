@@ -26,7 +26,9 @@ const Sidebar = () => {
           <IoMdArrowForward className='text-2xl'/>
         </div>
       </div>
-      <div>Cart item</div>
+      <div>{cart.map((item)=>{
+        return <CartItem item={item} key={item.id}/>
+      })}</div>
     </div>
   )
 }
