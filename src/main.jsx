@@ -4,12 +4,17 @@ import './index.css'
 import App from './App.jsx'
 import ProductProvider from './contexts/ProductProvider.jsx'
 //product provider
+//sidebarProdiver
+import SidebarProvider from './contexts/SidebarContext.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <ProductProvider>
+  <SidebarProvider>
+    <ProductProvider>
      <StrictMode>
     <App />
   </StrictMode>
   </ProductProvider>
+  </SidebarProvider>
+  
  
 )
