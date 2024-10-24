@@ -56,11 +56,13 @@ const Sidebar = () => {
 
     {/* Checkout Button */}
     <Link 
-      to='/checkout' 
-      className='bg-gray-800 text-white flex justify-center items-center p-4 w-full font-medium'
+      to='/' 
+      className='bg-gray-200 text-primary flex justify-center items-center p-4 w-full font-medium'
     >
-      Checkout
+      View Cart
     </Link>
+    <Link to='/checkout' 
+      className='bg-primary text-white flex justify-center items-center p-4 w-full font-medium'>Checkout</Link>
   </div>
 </div>
 
