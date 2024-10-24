@@ -5,6 +5,7 @@ import { SidebarContext } from '../contexts/SidebarContext'
 import { CartContext } from '../contexts/CartContext'
 //impport icons
 import {BsBag} from "react-icons/bs"
+import { FaHome } from 'react-icons/fa';
 import { Link } from 'react-router-dom'
 const Header = () => {
   //header state
@@ -22,7 +23,7 @@ const Header = () => {
       <div className='container mx-auto flex items-center justify-between h-full '>
       <Link to={"/"}>
       <div>
-        <img src='' alt="" />
+          <FaHome size={24} />
       </div>
         
       </Link>

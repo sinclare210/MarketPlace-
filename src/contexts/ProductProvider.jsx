@@ -18,6 +18,7 @@ const ProductProvider = ({ children }) => {
         };
         fetchProducts();  // Call the function
     }, []);
+    console.log(products)
 
     return (
         <ProductContext.Provider value={{ products }}>
