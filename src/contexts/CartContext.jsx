@@ -41,10 +41,34 @@ const CartProvider = ({children}) => {
   }
 
   //increase amount
-  
+  const increaseAmount = (id) => {
+    const item = cart.find(item => {
+      return item.id === id
+    });
+    addToCart(item, id)
+  }
+
+  //decrease amount
+  const decreaseAmount = (id) => {
+    const item = cart.find(item => item.id === id);
+    if(item){
+      const newCart = cart.map(items => {
+        if(items.id === id){
+          return{...items, amount: item.amount - 1}
+        }else{
+          return newItem
+        }
+      })
+      setCart(newCart)
+    }
+      if(item.amount < 2){
+          removeFromCart(id);
+      }
+   
+  }
 
   return (
-    <CartContext.Provider value={{cart, addToCart, removeFromCart, clearCart}}>
+    <CartContext.Provider value={{cart, addToCart, removeFromCart, clearCart, increaseAmount,decreaseAmount}}>
       {children}
     </CartContext.Provider>
   )
