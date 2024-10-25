@@ -16,7 +16,7 @@ const Hero = () => {
           </div>
           {/* title */}
           <h1 className='font-light mb-4 leading-[1.1] text-[70px]'>
-            Autumn sale <br/>
+            Sinclair's Promo Sale <br/>
           <span className='font-semibold'>Unisex</span>
           </h1>
           <Link to={"/"} className='self-start uppercase font-semibold border-b-2 border-primary'>
@@ -25,7 +25,7 @@ const Hero = () => {
         </div>
         {/* image */}
         <div className='hidden lg:block'>
-          <img src='' alt="" />
+          <img src='' alt="" className=''/>
         </div>
       </div>
     </section>
