@@ -39,6 +39,13 @@ const Checkout = () => {
     const handlePaystackSuccessAction = (reference) => {
       // Implementation for whatever you want to do with reference and after success call.
       console.log(reference);
+      setShippingDetails({
+         fullName: '',
+        address: '',
+        country: '',
+        email: '', 
+      })
+      
     };
 
     // you can call this function anything
@@ -146,7 +153,7 @@ const Checkout = () => {
         <button onClick={clearCart} className="bg-gray-300 text-gray-800 py-2 px-4 rounded-lg">
           Clear Cart
         </button>
-        <PaystackButton className="bg-blue-600 text-white py-2 px-6 rounded-lg" {...componentProps} />
+        <PaystackButton className="bg-blue-600 text-white py-2 px-6 rounded-lg" {...componentProps} onClick={clearCart}/>
       </div>
     </div>
   );
