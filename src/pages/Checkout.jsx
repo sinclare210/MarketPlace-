@@ -1,8 +1,65 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CartContext } from '../contexts/CartContext';
+import { PaystackButton } from 'react-paystack';
+
+ 
 
 const Checkout = () => {
   const { cart, clearCart, itemAmount, total } = useContext(CartContext);
+  const pub = "pk_test_9132ffe26eebfe402f4211b91750a5250eada20d"; // Your Paystack public key
+
+  // State for shipping details
+  const [shippingDetails, setShippingDetails] = useState({
+    fullName: '',
+    address: '',
+    country: '',
+    email: '', // Email field for user
+  });
+
+  // Handle input change for shipping details
+  const handleShippingChange = (e) => {
+    const { name, value } = e.target;
+    setShippingDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+  };
+
+  const { fullName, address, country, email } = shippingDetails;
+
+  // Calculate total in the smallest currency unit (e.g., cents)
+  const amountToCharge = Math.round(total * 100); // Ensure this is an integer value
+  console.log(email)
+
+  
+
+  
+  
+    // you can call this function anything
+    const handlePaystackSuccessAction = (reference) => {
+      // Implementation for whatever you want to do with reference and after success call.
+      console.log(reference);
+    };
+
+    // you can call this function anything
+    const handlePaystackCloseAction = () => {
+      // implementation for  whatever you want to do when the Paystack dialog closed.
+      console.log('closed')
+    }
+
+     const config = {
+    reference: (new Date()).getTime().toString(),
+    email: email,
+    amount: total * 100, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
+    publicKey: 'pk_test_9132ffe26eebfe402f4211b91750a5250eada20d',
+  };
+
+    const componentProps = {
+        ...config,
+        text: 'Paystack Button Implementation',
+        onSuccess: (reference) => handlePaystackSuccessAction(reference),
+        onClose: handlePaystackCloseAction,
+    };
 
   return (
     <div className="p-8 max-w-3xl mx-auto">
@@ -49,24 +106,39 @@ const Checkout = () => {
       <div className="mb-8 border-b pb-6">
         <h2 className="text-2xl font-semibold mb-4">Shipping Details</h2>
         <form className="space-y-4">
-          <input type="text" placeholder="Full Name" className="w-full border p-2 rounded-lg" />
-          <input type="text" placeholder="Address" className="w-full border p-2 rounded-lg" />
-          <input type="text" placeholder="City" className="w-full border p-2 rounded-lg" />
-          <input type="text" placeholder="Postal Code" className="w-full border p-2 rounded-lg" />
-          <input type="text" placeholder="Country" className="w-full border p-2 rounded-lg" />
+          <input 
+            type="text" 
+            name="fullName"
+            value={shippingDetails.fullName}
+            onChange={handleShippingChange}
+            placeholder="Full Name" 
+            className="w-full border p-2 rounded-lg" 
+          />
+          <input 
+            type="text" 
+            name="address"
+            value={shippingDetails.address}
+            onChange={handleShippingChange}
+            placeholder="Address" 
+            className="w-full border p-2 rounded-lg" 
+          />
+          <input 
+            type="text" 
+            name="country"
+            value={shippingDetails.country}
+            onChange={handleShippingChange}
+            placeholder="Country" 
+            className="w-full border p-2 rounded-lg" 
+          />
+          <input 
+            type="email" 
+            name="email" // Email input
+            value={shippingDetails.email}
+            onChange={handleShippingChange}
+            placeholder="Email" 
+            className="w-full border p-2 rounded-lg" 
+          />
         </form>
-      </div>
-
-      {/* Payment Details Placeholder */}
-      <div className="mb-8 border-b pb-6">
-        <h2 className="text-2xl font-semibold mb-4">Payment Details</h2>
-        <div className="space-y-4">
-          <input type="text" placeholder="Card Number" className="w-full border p-2 rounded-lg" />
-          <div className="flex space-x-4">
-            <input type="text" placeholder="MM/YY" className="w-1/2 border p-2 rounded-lg" />
-            <input type="text" placeholder="CVC" className="w-1/2 border p-2 rounded-lg" />
-          </div>
-        </div>
       </div>
 
       {/* Submit Order Button */}
@@ -74,12 +146,65 @@ const Checkout = () => {
         <button onClick={clearCart} className="bg-gray-300 text-gray-800 py-2 px-4 rounded-lg">
           Clear Cart
         </button>
-        <button className="bg-blue-600 text-white py-2 px-6 rounded-lg">
-          Place Order
-        </button>
+        <PaystackButton className="bg-blue-600 text-white py-2 px-6 rounded-lg" {...componentProps} />
       </div>
     </div>
   );
 };
 
 export default Checkout;
+
+//   import React from 'react';
+ 
+//   import { PaystackButton } from 'react-paystack';
+ 
+  
+//   const config = {
+//     reference: (new Date()).getTime().toString(),
+//     email: "user@example.com",
+//     amount: 20000, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
+//     publicKey: 'pk_test_9132ffe26eebfe402f4211b91750a5250eada20d',
+//   };
+  
+//   function Checkout() {
+//     // you can call this function anything
+//     const handlePaystackSuccessAction = (reference) => {
+//       // Implementation for whatever you want to do with reference and after success call.
+//       console.log(reference);
+//     };
+
+//     // you can call this function anything
+//     const handlePaystackCloseAction = () => {
+//       // implementation for  whatever you want to do when the Paystack dialog closed.
+//       console.log('closed')
+//     }
+
+//     const componentProps = {
+//         ...config,
+//         text: 'Paystack Button Implementation',
+//         onSuccess: (reference) => handlePaystackSuccessAction(reference),
+//         onClose: handlePaystackCloseAction,
+//     };
+
+//     return (
+//       <div className="App">
+//         <header className="App-header">
+//           <img src="" className="App-logo" alt="logo" />
+//           <p>
+//             Edit <code>src/App.js</code> and save to reload.
+//           </p>
+//           <a
+//             className="App-link"
+//             href="https://reactjs.org"
+//             target="_blank"
+//             rel="noopener noreferrer"
+//           >
+//             Learn React
+//           </a>
+//         </header>
+//         <PaystackButton {...componentProps} />
+//       </div>
+//     );
+//   }
+  
+//   export default Checkout;
