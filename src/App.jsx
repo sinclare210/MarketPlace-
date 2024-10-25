@@ -8,6 +8,7 @@ import ProductDetails from './pages/ProductDetails'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Sidebar from './components/Sidebar'
+import Checkout from './pages/Checkout'
 
 
 
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/product/:id' element={<ProductDetails/>}/>
+        <Route path='/checkout' element={<Checkout/>}/>
       </Routes>
       <Sidebar/>
       <Footer/>

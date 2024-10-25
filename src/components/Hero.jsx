@@ -17,7 +17,7 @@ const Hero = () => {
           {/* title */}
           <h1 className='font-light mb-4 leading-[1.1] text-[70px]'>
             Autumn sale <br/>
-          <span className='font-semibold'>Women</span>
+          <span className='font-semibold'>Unisex</span>
           </h1>
           <Link to={"/"} className='self-start uppercase font-semibold border-b-2 border-primary'>
             discover more

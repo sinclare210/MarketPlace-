@@ -61,7 +61,7 @@ const Sidebar = () => {
     >
       View Cart
     </Link>
-    <Link to='/checkout' 
+    <Link to='/checkout' onClick={handleClose}
       className='bg-primary text-white flex justify-center items-center p-4 w-full font-medium'>Checkout</Link>
   </div>
 </div>
