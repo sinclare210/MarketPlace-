@@ -22,7 +22,7 @@ const Login = ({ onLogin }) => {
       
       localStorage.setItem('isAuthenticated', true);
       onLogin(); // Update parent state
-      navigate("/"); // Navigate to home page after login
+      navigate("/checkout"); // Navigate to home page after login
     } else {
       alert("Invalid credentials. Please try again.");
     }
