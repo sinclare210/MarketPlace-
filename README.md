@@ -40,8 +40,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [solution URL](https://github.com/sinclare210/PorfolioWebsite)
-- Live Site URL: [live site URL](https://porfolio-website-sigma.vercel.app/)
+- Solution URL: [solution URL](https://github.com/sinclare210/MarketPlace-)
+- Live Site URL: [live site URL](https://market-place-beryl.vercel.app/)
 
 ## My process
 
