@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import bcrypt from 'bcryptjs';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const [formData, setFormData] = useState({ username: '', password: '' });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,8 +20,8 @@ const Signup = () => {
     localStorage.setItem('user', JSON.stringify({ username: formData.username, password: hashedPassword }));
     alert("Account created successfully!");
 
-    // Redirect to login page
-    window.location.href = "/login";
+    // navigate to login page
+     navigate("/login");
   };
 
   return (
