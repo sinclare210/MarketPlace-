@@ -11,6 +11,7 @@ const Header = () => {
   const [isActive, setIsActive] = useState(false);
   const { isOpen, setIsOpen } = useContext(SidebarContext);
   const { itemAmount } = useContext(CartContext);
+   const isAuthenticated = localStorage.getItem('isAuthenticated'); // Check authentication status
   const navigate = useNavigate();
 
   // Event listener for scroll
@@ -39,19 +40,23 @@ const Header = () => {
         </Link>
 
         {/* Sign Out button centered */}
-        <button 
-          onClick={handleSignOut} 
-          className="text-red-500 font-semibold hover:text-red-700 transition mx-auto"
-        >
-          Sign Out
-        </button>
-
-        {/* Cart icon with item amount */}
-        <div onClick={() => setIsOpen(!isOpen)} className="cursor-pointer flex relative">
-          <BsBag className="text-2xl" />
-          <div className="bg-red-500 absolute -right-2 -bottom-2 text-white rounded-full flex justify-center items-center h-[18px] w-[18px] text-[12px]">
-            {itemAmount}
-          </div>
+        <div className='flex items-center'>
+          {isAuthenticated && (
+            <>
+              <button 
+                onClick={handleSignOut}
+                className='text-red-600 font-semibold mx-4 hover:underline'
+              >
+                Sign Out
+              </button>
+              <div onClick={() => setIsOpen(!isOpen)} className='cursor-pointer flex relative'>
+                <BsBag className='text-2xl' />
+                <div className='bg-red-500 absolute -right-2 -bottom-2 text-white rounded-full flex justify-center items-center h-[18px] w-[18px] text-[12px]'>
+                  {itemAmount}
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </header>
