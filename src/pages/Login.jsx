@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import bcrypt from 'bcryptjs';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const navigate = useNavigate();
 
@@ -21,6 +21,7 @@ const Login = () => {
     ) {
       alert("Login successful!");
       localStorage.setItem('isAuthenticated', true);
+      onLogin(); // Update parent state
       navigate("/"); // Navigate to home page after login
     } else {
       alert("Invalid credentials. Please try again.");
@@ -65,7 +66,7 @@ const Login = () => {
 
         <p className="mt-4 text-center text-gray-600">
           Don't have an account?{' '}
-          <a href="/signup" className="text-red-600 hover:underline">Sign up</a>
+          <Link to="/signup" className="text-red-600 hover:underline">Sign up</Link>
         </p>
       </form>
     </div>

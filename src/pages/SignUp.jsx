@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import bcrypt from 'bcryptjs';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
   const [formData, setFormData] = useState({ username: '', password: '' });
@@ -60,7 +61,7 @@ const Signup = () => {
 
         <p className="mt-4 text-center text-gray-600">
           Already have an account?{' '}
-          <a href="/login" className="text-red-600 hover:underline">Login</a>
+          <Link to="/login" className="text-red-600 hover:underline">Login</Link>
         </p>
       </form>
     </div>
