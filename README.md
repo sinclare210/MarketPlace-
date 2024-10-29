@@ -69,6 +69,8 @@ I need to work on use UseContext() more often
 
 - [Vercel issue](https://stackoverflow.com/questions/75963788/why-is-my-vercel-project-giving-me-an-error-404-on-refresh) - Helped with the vercel refresh error
 
+- [Fake Api Store](https://fakestoreapi.com/) - Used to populate the products on the site.
+
 
 ## Author
 - Twitter - [@Sincla1Olajuwon](https://x.com/Sincla1Olajuwon?t=9Rl_pnqS5YlDRBy-PVlhWQ&s=09)
