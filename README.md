@@ -67,7 +67,7 @@ I need to work on use UseContext() more often
 
 ### Useful resources
 
-- [Shadcn Download](https://youtu.be/gXSC5eMw68o?si=ZcUd02Q5brZ0wslG) - the vieo that helped with shadcn installation.
+- [Vercel issue](https://stackoverflow.com/questions/75963788/why-is-my-vercel-project-giving-me-an-error-404-on-refresh) - Helped with the vercel refresh error
 
 
 ## Author
