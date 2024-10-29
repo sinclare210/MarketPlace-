@@ -19,7 +19,7 @@ const Login = ({ onLogin }) => {
       storedUser.username === formData.username && 
       bcrypt.compareSync(formData.password, storedUser.password)
     ) {
-      alert("Login successful!");
+      
       localStorage.setItem('isAuthenticated', true);
       onLogin(); // Update parent state
       navigate("/"); // Navigate to home page after login
