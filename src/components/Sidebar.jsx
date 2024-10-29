@@ -17,7 +17,7 @@ import { CartContext } from '../contexts/CartContext'
 const Sidebar = () => {
   const {isOpen, handleClose} = useContext(SidebarContext);
   const {cart, clearCart, itemAmount, total}= useContext(CartContext)
-  console.log(useContext(CartContext))
+  
 
   return (
     <div className={`${isOpen ? "right-0" : "-right-full"} w-full bg-white fixed top-0 h-full shadow-2xl duration-300 z-20 px-4 transition-all xl:max-w-[30vw] lg:px-[35px] md:w-[35vw]`}>

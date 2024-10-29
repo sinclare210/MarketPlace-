@@ -64,7 +64,7 @@ const Checkout = () => {
 
     const componentProps = {
         ...config,
-        text: 'Pay   Now',
+        text: 'Pay Now',
         onSuccess: (reference) => handlePaystackSuccessAction(reference),
         onClose: handlePaystackCloseAction,
     };
